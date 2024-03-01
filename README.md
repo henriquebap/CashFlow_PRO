@@ -1,117 +1,162 @@
-# CashFlow PRO
+# CashFlowPro
 
-Um API de controle de despesas pessoais
+Uma API de controle de despesas pessoais.
 
 ## Endpoints
 
 - Categorias
 
-  - Listar todas
-  - [Detalhar](#Detalhar-Categorias)
-  - Cadastrar
-  - Apagar
-  - Editar
+  - [Listar Todas](#listar-todas)
+  - [Detalhar](#detalhar-categorias)
+  - [Cadastrar](#cadastrar-categoria)
+  - [Apagar](#apagar-categoria)
+  - [Editar](#editar-categoria)
 
-- Movimentacoes
+- Movimentações
 
 ---
 
-### Listar todas
+### Listar Todas
 
-' GET ' /categoria
+`GET` /categoria
 
-retorna um array com todas as categorias cadastradas.
+Retorna um array com todas as categorias cadastradas.
 
 **Exemplo de Resposta**
 
-```json
+```js
 [
   {
-    "id": 1,
-    "nome": "Alimentacao",
-    "icone": "fast-food"
-  }
-]
+    id: 1,
+    nome: "Alimentação",
+    icone: "fast-food",
+  },
+];
 ```
 
-**Codigos de Status**
+**Códigos de Status**
 
-| codigo | Descricao                    |
+| código | descrição                    |
 | ------ | ---------------------------- |
 | 200    | Dados retornados com sucesso |
 
+---
+
 ### Detalhar Categorias
 
-`Get` /categoria/{id}
+`GET` /categoria/{id}
 
-```json
-{
-  "id": 1,
-  "nome": "Alimentacao",
-  "icone": "fast-food"
-}
+Retornar os dados da categoria com o `id` informado.
+
+**Exemplo de Resposta**
+
+```js
+
+    {
+        "id": 1,
+        "nome": "Alimentação",
+        "icone": "fast-food"
+    }
+
 ```
 
-**Codigo De Status**
+**Códigos de Status**
 
-| Codigo | Descricao                                  |
-| ------ | ------------------------------------------ |
-| 200    | Dados Retornados com sucesso               |
-| 404    | Id da categoria nao encontrado (Not Found) |
+| código | descrição                      |
+| ------ | ------------------------------ |
+| 200    | Dados retornados com sucesso   |
+| 404    | Id da categoria não encontrado |
+
+---
 
 ### Cadastrar Categoria
 
 `POST` /categoria
 
-Insere uma nova categoria
+Insere uma nova categoria.
 
-**Corpo da Requisicao**
+**Corpo da Requisição**
 
-| Campo | Tipo   | Obrigatorio | descricao                                 |
-| ----- | ------ | :---------: | ----------------------------------------- |
-| Nome  | String |      S      | Um nome curto para a categoria            |
-| Icone | String |      N      | O nome do icone conforme o material Icons |
+| campo | tipo   | obrigatório | descrição                               |
+| ----- | ------ | :---------: | --------------------------------------- |
+| nome  | string |     ✅      | Um nome curto para a categoria          |
+| icone | string |     ❌      | O nome do ícone conforme Material Icons |
 
-**Categoria**
-**Exemplo de Corpo da requisicao**
-
-```json
+```js
 {
-  "nome": "Alimentacao",
-  "icone": "fast-food"
+    "nome": "Alimentação",
+    "icone": "fast-food"
 }
 ```
 
 **Exemplo de Resposta**
 
-```json
-[
-  {
+```js
+{
     "id": 1,
-    "nome": "Alimentacao",
+    "nome": "Alimentação",
     "icone": "fast-food"
-  }
-]
+}
 ```
 
-**Codigo de Status**
+**Códigos de Status**
 
-| Codigo | Descricao                                           |
+| código | descrição                                           |
 | ------ | --------------------------------------------------- |
 | 201    | Categoria criada com sucesso                        |
-| 400    | Erro de validacao - verifique o corpo da requisicao |
+| 400    | Erro de validação - verifique o corpo da requisição |
 
-### Apagar Categorias
+---
 
-`Delete` /categoria/{id}
+### Apagar Categoria
 
-Apaga a categoria com o `id` informado
+`DELETE` /categoria/{id}
 
-**Codigo de Status**
+Apaga a categoria com o `id` informado.
 
-| Codigo | Descricao                                      |
-| ------ | ---------------------------------------------- |
-| 204    | No Content - Categoria foi apagada com sucesso |
-| 404    | Id da categoria noa encontrado                 |
+**Códigos de Status**
+
+| código | descrição                      |
+| ------ | ------------------------------ |
+| 204    | Categoria apagada com sucesso  |
+| 404    | Id da categoria não encontrado |
+
+---
 
 ### Editar Categoria
+
+`PUT` /categoria/{id}
+
+Atualiza os dados da categoria com o `id` informado.
+
+**Corpo da Requisição**
+
+| campo | tipo   | obrigatório | descrição                               |
+| ----- | ------ | :---------: | --------------------------------------- |
+| nome  | string |     ✅      | Um nome curto para a categoria          |
+| icone | string |     ✅      | O nome do ícone conforme Material Icons |
+
+```js
+{
+    "nome": "Alimentação",
+    "icone": "fast-food"
+}
+```
+
+**Exemplo de Resposta**
+
+```js
+{
+    "id": 1,
+    "nome": "Alimentação",
+    "icone": "fast-food"
+}
+```
+
+**Códigos de Status**
+
+| código | descrição                                            |
+| ------ | ---------------------------------------------------- |
+| 200    | Categoria atualizada com sucesso                     |
+| 400    | A validação falhou - verifique o corpo da requisição |
+| 404    | Id da categoria não encontrado                       |
