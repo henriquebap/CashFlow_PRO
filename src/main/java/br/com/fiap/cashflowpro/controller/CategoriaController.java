@@ -31,7 +31,6 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("categoria")
 @Slf4j
 public class CategoriaController {
-    Logger log = LoggerFactory.getLogger(getClass());
 
     // List<Categoria> repository = new ArrayList<>();
 
