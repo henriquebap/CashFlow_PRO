@@ -5,8 +5,6 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 import static org.springframework.http.HttpStatus.OK;
 
-
-
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -33,7 +31,6 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("categoria")
 @Slf4j
 public class CategoriaController {
-
     Logger log = LoggerFactory.getLogger(getClass());
 
     // List<Categoria> repository = new ArrayList<>();
