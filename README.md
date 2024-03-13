@@ -1,16 +1,15 @@
 # CashFlowPro
-
 Uma API de controle de despesas pessoais.
+
 
 ## Endpoints
 
 - Categorias
-
-  - [Listar Todas](#listar-todas)
-  - [Detalhar](#detalhar-categorias)
-  - [Cadastrar](#cadastrar-categoria)
-  - [Apagar](#apagar-categoria)
-  - [Editar](#editar-categoria)
+    - [Listar Todas](#listar-todas)
+    - [Detalhar](#detalhar-categorias)
+    - [Cadastrar](#cadastrar-categoria)
+    - [Apagar](#apagar-categoria)
+    - [Editar](#editar-categoria)
 
 - Movimentações
 
@@ -22,23 +21,23 @@ Uma API de controle de despesas pessoais.
 
 Retorna um array com todas as categorias cadastradas.
 
-**Exemplo de Resposta**
+**Exemplo de Resposta** 
 
 ```js
 [
-  {
-    id: 1,
-    nome: "Alimentação",
-    icone: "fast-food",
-  },
-];
+    {
+        "id": 1,
+        "nome": "Alimentação",
+        "icone": "fast-food"
+    }
+]
 ```
 
-**Códigos de Status**
+**Códigos de Status** 
 
-| código | descrição                    |
-| ------ | ---------------------------- |
-| 200    | Dados retornados com sucesso |
+| código | descrição |
+|--------|-----------|
+|200|Dados retornados com sucesso
 
 ---
 
@@ -48,7 +47,7 @@ Retorna um array com todas as categorias cadastradas.
 
 Retornar os dados da categoria com o `id` informado.
 
-**Exemplo de Resposta**
+**Exemplo de Resposta** 
 
 ```js
 
@@ -60,14 +59,15 @@ Retornar os dados da categoria com o `id` informado.
 
 ```
 
-**Códigos de Status**
+**Códigos de Status** 
 
-| código | descrição                      |
-| ------ | ------------------------------ |
-| 200    | Dados retornados com sucesso   |
-| 404    | Id da categoria não encontrado |
+| código | descrição |
+|--------|-----------|
+|200|Dados retornados com sucesso
+|404| Id da categoria não encontrado
 
----
+___
+
 
 ### Cadastrar Categoria
 
@@ -75,12 +75,13 @@ Retornar os dados da categoria com o `id` informado.
 
 Insere uma nova categoria.
 
-**Corpo da Requisição**
+**Corpo da Requisição** 
 
-| campo | tipo   | obrigatório | descrição                               |
-| ----- | ------ | :---------: | --------------------------------------- |
-| nome  | string |     ✅      | Um nome curto para a categoria          |
-| icone | string |     ❌      | O nome do ícone conforme Material Icons |
+|campo|tipo|obrigatório|descrição
+|-----|----|:-----------:|---------
+|nome|string|✅|Um nome curto para a categoria
+|icone|string|❌|O nome do ícone conforme Material Icons
+
 
 ```js
 {
@@ -89,7 +90,7 @@ Insere uma nova categoria.
 }
 ```
 
-**Exemplo de Resposta**
+**Exemplo de Resposta** 
 
 ```js
 {
@@ -99,12 +100,12 @@ Insere uma nova categoria.
 }
 ```
 
-**Códigos de Status**
+**Códigos de Status** 
 
-| código | descrição                                           |
-| ------ | --------------------------------------------------- |
-| 201    | Categoria criada com sucesso                        |
-| 400    | Erro de validação - verifique o corpo da requisição |
+| código | descrição |
+|--------|-----------|
+|201|Categoria criada com sucesso
+|400|Erro de validação - verifique o corpo da requisição
 
 ---
 
@@ -114,14 +115,14 @@ Insere uma nova categoria.
 
 Apaga a categoria com o `id` informado.
 
-**Códigos de Status**
+**Códigos de Status** 
 
-| código | descrição                      |
-| ------ | ------------------------------ |
-| 204    | Categoria apagada com sucesso  |
-| 404    | Id da categoria não encontrado |
+| código | descrição |
+|--------|-----------|
+|204|Categoria apagada com sucesso
+|404| Id da categoria não encontrado
 
----
+___
 
 ### Editar Categoria
 
@@ -129,12 +130,13 @@ Apaga a categoria com o `id` informado.
 
 Atualiza os dados da categoria com o `id` informado.
 
-**Corpo da Requisição**
+**Corpo da Requisição** 
 
-| campo | tipo   | obrigatório | descrição                               |
-| ----- | ------ | :---------: | --------------------------------------- |
-| nome  | string |     ✅      | Um nome curto para a categoria          |
-| icone | string |     ✅      | O nome do ícone conforme Material Icons |
+|campo|tipo|obrigatório|descrição
+|-----|----|:-----------:|---------
+|nome|string|✅|Um nome curto para a categoria
+|icone|string|✅|O nome do ícone conforme Material Icons
+
 
 ```js
 {
@@ -143,7 +145,7 @@ Atualiza os dados da categoria com o `id` informado.
 }
 ```
 
-**Exemplo de Resposta**
+**Exemplo de Resposta** 
 
 ```js
 {
@@ -153,10 +155,11 @@ Atualiza os dados da categoria com o `id` informado.
 }
 ```
 
-**Códigos de Status**
+**Códigos de Status** 
 
-| código | descrição                                            |
-| ------ | ---------------------------------------------------- |
-| 200    | Categoria atualizada com sucesso                     |
-| 400    | A validação falhou - verifique o corpo da requisição |
-| 404    | Id da categoria não encontrado                       |
+| código | descrição |
+|--------|-----------|
+|200|Categoria atualizada com sucesso
+|400| A validação falhou - verifique o corpo da requisição
+|404| Id da categoria não encontrado
+
