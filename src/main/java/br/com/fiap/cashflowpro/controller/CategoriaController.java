@@ -6,9 +6,6 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 import static org.springframework.http.HttpStatus.OK;
 
 import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -42,6 +39,7 @@ public class CategoriaController {
         return repository.findAll();
     }
 
+    @SuppressWarnings("null")
     @PostMapping
     @ResponseStatus(CREATED)
     public Categoria create(@RequestBody Categoria categoria) {
@@ -49,33 +47,35 @@ public class CategoriaController {
         return repository.save(categoria);
     }
 
+    @SuppressWarnings("null")
     @GetMapping("{id}")
     public ResponseEntity<Categoria> get(@PathVariable Long id) {
         log.info("buscando categoria com id {}", id);
 
         return repository
-            .findById(id)
-            .map(ResponseEntity::ok)
-            .orElse(ResponseEntity.notFound().build());
-            
+                .findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+
     }
 
+    @SuppressWarnings("null")
     @DeleteMapping("{id}")
     @ResponseStatus(NO_CONTENT)
     public void destroy(@PathVariable Long id) {
         log.info("apagando categoria {}", id);
         repository
-            .findById(id)
-            .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "id da categoria nao encontrado"));
-        repository.deleteById(id);      
+                .findById(id)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "id da categoria nao encontrado"));
+        repository.deleteById(id);
     }
 
+    @SuppressWarnings("null")
     @PutMapping("{id}")
     @ResponseStatus(OK)
     public Categoria update(
-        @PathVariable Long id,
-        @RequestBody Categoria categoria
-    ){
+            @PathVariable Long id,
+            @RequestBody Categoria categoria) {
         log.info("atualizando categoria com id {} para {}", id, categoria);
 
         VerififcarSeExisteCategoria(id);
@@ -83,16 +83,17 @@ public class CategoriaController {
         var categoriaAtualizada = new Categoria();
 
         BeanUtils.copyProperties(categoria, categoriaAtualizada);
-        
+
         categoriaAtualizada.setId(id);
         return repository.save(categoriaAtualizada);
 
     }
 
+    @SuppressWarnings("null")
     private void VerififcarSeExisteCategoria(Long id) {
         repository
-            .findById(id)
-            .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Nao foi encontrado o id incerido"));
+                .findById(id)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Nao foi encontrado o id incerido"));
     }
 
 }
