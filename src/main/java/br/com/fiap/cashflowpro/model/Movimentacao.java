@@ -3,6 +3,7 @@ package br.com.fiap.cashflowpro.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import br.com.fiap.cashflowpro.validation.TipoMovimentacao;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,7 +21,7 @@ public class Movimentacao {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "{movimentacao.descriacao.notblank}")
     @Size(min = 3, max = 255)
     private String descricao;
 
@@ -29,7 +30,7 @@ public class Movimentacao {
     @Positive
     private BigDecimal valor;
 
-    // @TipoMovimentacao
+    @TipoMovimentacao
     private String tipo; // RECEITA | DESPESA
 
 }
